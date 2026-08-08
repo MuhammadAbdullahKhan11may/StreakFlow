@@ -64,6 +64,7 @@ function updateUI() {
   updateMarkDoneButton();
   updateWeekRow();
   updateBadges();
+  updateTodayBadge();
 }
 
 // ===============================
