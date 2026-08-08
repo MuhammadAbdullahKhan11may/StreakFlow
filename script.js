@@ -63,7 +63,7 @@ function updateUI() {
   updateStats();
   updateMarkDoneButton();
   updateWeekRow();
-  updateLongestStreak();
+  updateBadges();
 }
 
 // ===============================
@@ -240,6 +240,25 @@ function updateLongestStreak() {
   }
 
   return longest;
+}
+
+// ===============================
+// 🏅 UPDATE BADGES
+// ===============================
+function updateBadges() {
+  let longest = updateLongestStreak();
+
+  let personalBest = document.getElementById("personalBestBadge");
+  let onFire = document.getElementById("onFireBadge");
+
+  if (personalBest) {
+    personalBest.style.display =
+      (data.streak > 0 && data.streak >= longest) ? "inline-block" : "none";
+  }
+
+  if (onFire) {
+    onFire.style.display = (data.streak >= 3) ? "inline-block" : "none";
+  }
 }
 
 // ===============================
