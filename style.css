@@ -221,18 +221,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+.streak-top-row .label {
+  margin-bottom: 0;
 }
 
 .today-badge {
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(4px);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  color: #ff6a1a;
   font-size: 12px;
   font-weight: 700;
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   display: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .today-badge.show {
