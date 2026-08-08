@@ -280,9 +280,11 @@ function updateStats() {
 
   let percentEl = document.querySelector(".progress-percent");
   let bar = document.querySelector(".progress-bar-fill");
+  let completionRateEl = document.getElementById("completionRateValue");
 
   if (percentEl) percentEl.innerText = percent + "%";
   if (bar) bar.style.width = percent + "%";
+  if (completionRateEl) completionRateEl.innerText = percent + "%";
 }
 
 // ===============================
