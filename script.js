@@ -61,6 +61,8 @@ function updateUI() {
   updateTodayStatus();
   updateProgressList();
   updateStats();
+  updateMarkDoneButton();
+  updateWeekRow();
 }
 
 // ===============================
