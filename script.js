@@ -93,18 +93,51 @@ function updateTodayStatus() {
 }
 
 // ===============================
+// 📅 UPDATE TODAY STATUS
+// ===============================
+function updateTodayStatus() {
+  let today = getToday();
+
+  let todayItem = document.querySelector(".today-item");
+
+  if (!todayItem) return;
+
+  let pill = todayItem.querySelector(".status-pill");
+
+  if (data.days[today] === "done") {
+    pill.innerText = "DONE";
+    pill.classList.remove("today-pill");
+    pill.classList.add("done-pill");
+  }
+}
+
+// ===============================
+// ✅ UPDATE MARK AS DONE BUTTON
+// ===============================
+function updateMarkDoneButton() {
+  let today = getToday();
+  let btn = document.querySelector(".mark-done-btn");
+  let text = document.getElementById("markDoneText");
+  if (!btn) return;
+
+  if (data.days[today] === "done") {
+    btn.classList.add("completed");
+    if (text) text.innerHTML = "✓ Completed";
+  }
+}
+
+// ===============================
 // 📊 UPDATE DAY LIST (DYNAMIC)
 // ===============================
 function updateProgressList() {
   let items = document.querySelectorAll(".day-item");
 
-  let dates = Object.keys(data.days);
-
-  items.forEach((item, index) => {
-    let date = dates[index];
+  items.forEach((item) => {
+    let date = item.getAttribute("data-date");
     if (!date) return;
 
     let status = data.days[date];
+    if (!status) return;
 
     let pill = item.querySelector(".status-pill");
     let icon = item.querySelector(".status-icon");
@@ -113,10 +146,12 @@ function updateProgressList() {
       pill.innerText = "DONE";
       pill.className = "status-pill done-pill";
       icon.innerText = "✓";
+      icon.className = "status-icon done-icon";
     } else if (status === "missed") {
       pill.innerText = "MISSED";
       pill.className = "status-pill missed-pill";
       icon.innerText = "✕";
+      icon.className = "status-icon missed-icon";
     }
   });
 }
