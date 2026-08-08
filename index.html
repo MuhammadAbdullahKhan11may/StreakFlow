@@ -3,72 +3,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StreakFlow</title>
+<title>ABTalks — The 60-Day Coding Challenge</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="app">
-
-    <div class="brand">
-      <span class="brand-icon">⚡</span>
-      <span class="brand-name">StreakFlow</span>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">🔥ABTalks</a>
+      <nav class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#why">Why ABTalks</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#" class="btn btn-primary btn-small">Join Challenge →</a>
     </div>
+  </header>
 
-    <div class="card">
-      <span class="label label-orange">CURRENT STREAK</span>
-      <h1 class="streak-title">🔥 5 Day Streak</h1>
-      <p class="streak-sub">You're doing great, keep going!</p>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="badge">THE 60-DAY CODING CHALLENGE</span>
+      <h1>Build every day. <span class="accent">Become<br>a better developer.</span></h1>
+      <p class="hero-sub">
+        Stop watching tutorials. Start building. Spend 60 days turning what
+        you learn into real projects, public proof, and a portfolio you can
+        actually show.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Start the 60-Day Challenge →</a>
+        <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+      </div>
+      <p class="hero-note">Built for college students • Real projects • Public proof of work</p>
+    </div>
+  </section>
 
-      <div class="days">
-        <div class="day">
-          <div class="dot filled"></div>
-          <span>M</span>
+  <!-- ===== PROBLEM ===== -->
+  <section class="problem">
+    <div class="container">
+      <span class="eyebrow">THE PROBLEM</span>
+      <h2>Learning to code is easy.<br><span class="muted">Showing what you can do isn't.</span></h2>
+      <p class="section-sub">
+        Most students spend months watching tutorials and collecting certificates.
+        When it comes to internships and jobs, they don't have enough real work to show.
+      </p>
+
+      <div class="problem-cards">
+        <div class="p-card">
+          <span class="p-card-label">WATCH</span>
+          <p class="p-card-title">Endless tutorials.</p>
         </div>
-        <div class="day">
-          <div class="dot filled"></div>
-          <span>T</span>
+        <div class="p-card">
+          <span class="p-card-label">LEARN</span>
+          <p class="p-card-title">Lots of concepts.</p>
         </div>
-        <div class="day">
-          <div class="dot filled"></div>
-          <span>W</span>
-        </div>
-        <div class="day">
-          <div class="dot filled"></div>
-          <span>T</span>
-        </div>
-        <div class="day">
-          <div class="dot filled"></div>
-          <span>F</span>
-        </div>
-        <div class="day">
-          <div class="dot"></div>
-          <span>S</span>
-        </div>
-        <div class="day">
-          <div class="dot"></div>
-          <span>S</span>
+        <div class="p-card p-card-highlight">
+          <span class="p-card-label">BUT THEN...</span>
+          <p class="p-card-title">Nothing meaningful to show.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="card">
-      <span class="label label-gray">🎯 TODAY'S GOAL</span>
-      <h2 class="goal-title">Upload 1 video</h2>
+  <!-- ===== SOLUTION ===== -->
+  <section class="solution" id="how-it-works">
+    <div class="container">
+      <span class="eyebrow">THE SOLUTION</span>
+      <h2>60 days of building. <span class="accent">60 days of proof.</span></h2>
+      <p class="section-sub">
+        ABTalks gives you one focused challenge every day. Build it. Commit it to
+        GitHub. Share your progress on LinkedIn. Repeat.
+      </p>
 
-      <button class="mark-done-btn">Mark as Done</button>
-        <span id="markDoneText">Mark as Done</span>
-      </button>
+      <div class="flow">
+        <span class="flow-pill flow-pill-accent">DAY 01</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">BUILD</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">COMMIT</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">SHARE</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill flow-pill-accent">DAY 60</span>
+      </div>
     </div>
+  </section>
 
-    <a href="homepage.html" class="dashboard-btn">
-  View Dashboard <span class="arrow">→</span>
-</a>
+  <!-- ===== WHY ===== -->
+  <section class="why" id="why">
+    <div class="container">
+      <h2>Why should you spend 60 days on this?</h2>
 
-    <p class="footer-text">Keep your momentum going · Day 5</p>
+      <div class="why-cards">
+        <div class="why-card">
+          <span class="why-icon">💻</span>
+          <h3>Real Projects</h3>
+          <p>Build something instead of just watching someone else build it.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🔥</span>
+          <h3>Consistency</h3>
+          <p>Turn coding from something you occasionally do into something you do every day.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">📁</span>
+          <h3>Portfolio</h3>
+          <p>Finish with real work you can put on your GitHub and show recruiters.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">👀</span>
+          <h3>Visibility</h3>
+          <p>Share your progress publicly and make your growth visible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- ===== STEPS ===== -->
+  <section class="steps">
+    <div class="container">
+      <h2>Simple enough to do every day.</h2>
 
-<script src="script.js"></script>
+      <div class="step-grid">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Pick Your Track</h3>
+          <p>Choose the coding track that fits your goals.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Build Every Day</h3>
+          <p>Complete the day's challenge and create something real.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Prove Your Work</h3>
+          <p>Submit your GitHub commit and LinkedIn post.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MID CTA ===== -->
+  <section class="mid-cta">
+    <div class="container">
+      <h2>One day won't change your career. <span class="accent">60 consistent days might.</span></h2>
+      <p class="section-sub">You don't need to become an expert overnight. You just need to show up today.</p>
+      <a href="#" class="btn btn-primary">Start Day 1 →</a>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>Built for students who want to stand out.</h2>
+
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"I stopped saying I was learning to code and finally had projects I could show."</p>
+          <div class="testimonial-author">
+            <span class="avatar avatar-orange">PS</span>
+            <div>
+              <p class="author-name">Priya S.</p>
+              <p class="author-role">Computer Science Student</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"I liked that I had something small to complete every day. It made consistency much easier."</p>
+          <div class="testimonial-author">
+            <span class="avatar avatar-dark">AM</span>
+            <div>
+              <p class="author-name">Arjun M.</p>
+              <p class="author-role">Engineering Student</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"After 60 days I had 12 projects on GitHub. That changed every recruiter conversation."</p>
+          <div class="testimonial-author">
+            <span class="avatar avatar-orange">RK</span>
+            <div>
+              <p class="author-name">Riya K.</p>
+              <p class="author-role">IT Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="faq-title">Questions, answered.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question">
+            Do I need to be an experienced developer?
+            <span class="faq-toggle">×</span>
+          </button>
+          <div class="faq-answer">
+            <p>Not at all. ABTalks is designed for learners at any stage. If you can write basic code, you can do this challenge. The daily tasks scale with your level.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What happens every day?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Each day you receive one focused coding challenge to build, commit to GitHub, and share on LinkedIn.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Why 60 days?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>60 days is long enough to build a real habit and a real portfolio, without being so long it becomes overwhelming.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do I need GitHub?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, GitHub is where you'll commit your daily work to build a visible portfolio.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Why post on LinkedIn?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sharing your progress publicly builds visibility and accountability, and helps recruiters notice your growth.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I submit my work?
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Submit a link to your GitHub commit and LinkedIn post for each day's challenge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA + FOOTER ===== -->
+  <section class="final-cta-wrap">
+    <div class="container">
+      <div class="final-cta">
+        <span class="final-cta-eyebrow">YOUR DAY ONE STARTS HERE</span>
+        <h2>Give yourself 60 days. See what you can build.</h2>
+        <p>Build. Commit. Share. Repeat.</p>
+        <a href="#" class="btn btn-white">Join the 60-Day Challenge →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="logo">🔥ABTalks</p>
+        <p class="footer-tag">Build. Commit. Share. Repeat.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#">Challenge</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-toggle').textContent = '+';
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          item.querySelector('.faq-toggle').textContent = '×';
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
