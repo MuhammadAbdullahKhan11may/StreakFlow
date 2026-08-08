@@ -8,7 +8,11 @@ let data = JSON.parse(localStorage.getItem("streakData")) || {
 
 // Get today's date
 function getToday() {
-  return new Date().toISOString().split("T")[0];
+  let d = new Date();
+  let year = d.getFullYear();
+  let month = String(d.getMonth() + 1).padStart(2, "0");
+  let day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 // ===============================
@@ -28,7 +32,9 @@ function markTodayDone() {
   // Check yesterday
   let yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  let yDate = yesterday.toISOString().split("T")[0];
+  let yDate = yesterday.getFullYear() + "-" +
+    String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
+    String(yesterday.getDate()).padStart(2, "0");
 
   if (data.days[yDate] === "done") {
     data.streak++;
