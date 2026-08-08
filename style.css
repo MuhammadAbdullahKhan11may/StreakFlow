@@ -174,7 +174,18 @@ new_str:
 }
 
 /* Hero */
-.hero { padding: 90px 0 70px; background: var(--gray-light); }
+new_str:
+/* Hero */
+.hero {
+  padding: 90px 0 70px;
+  position: relative;
+  background-image:
+    linear-gradient(rgba(26,26,26,0.55), rgba(26,26,26,0.55)),
+    url('image1.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 .hero-inner { max-width: 760px; margin: 0 auto; text-align: center; }
 .badge {
   display: inline-block;
@@ -187,10 +198,10 @@ new_str:
   border-radius: 20px;
   margin-bottom: 24px;
 }
-.hero h1 { font-size: 52px; margin-bottom: 22px; }
-.hero-sub { color: var(--gray); font-size: 17px; max-width: 600px; margin: 0 auto 32px; }
+.hero h1 { font-size: 52px; margin-bottom: 22px; color: #fff; }
+.hero-sub { color: #e8e6e2; font-size: 17px; max-width: 600px; margin: 0 auto 32px; }
 .hero-actions { display: flex; gap: 14px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
-.hero-note { color: var(--gray); font-size: 13px; }
+.hero-note { color: #cfcdc8; font-size: 13px; }
 
 /* Problem */
 .problem { padding: 90px 0; }
