@@ -212,7 +212,18 @@
 
     <!-- Back to Home -->
     <button id="resetBtn" class="back-btn" style="margin-top:10px; border:none; cursor:pointer;">Reset All Progress</button>
-
+<!-- Reset Confirmation Modal -->
+<div class="modal-overlay" id="resetModal">
+  <div class="modal-box">
+    <span class="modal-icon">⚠️</span>
+    <h3 class="modal-title">Reset All Progress?</h3>
+    <p class="modal-text">This will erase your entire streak history. This action can't be undone.</p>
+    <div class="modal-actions">
+      <button class="modal-btn modal-cancel" id="modalCancelBtn">Cancel</button>
+      <button class="modal-btn modal-confirm" id="modalConfirmBtn">Yes, Reset</button>
+    </div>
+  </div>
+</div>
   </div>
 <script src="script.js"></script>
 </body>
