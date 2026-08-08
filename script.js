@@ -188,6 +188,58 @@ function updateWeekRow() {
 }
 
 // ===============================
+// 🏆 UPDATE LONGEST STREAK
+// ===============================
+function updateLongestStreak() {
+  let dates = Object.keys(data.days)
+    .filter(date => data.days[date] === "done")
+    .sort(); // ascending order, e.g. "2026-08-04" before "2026-08-05"
+
+  let longest = 0;
+  let longestEndDate = null;
+  let current = 0;
+  let prevDate = null;
+
+  dates.forEach((dateStr) => {
+    let date = new Date(dateStr);
+
+    if (prevDate) {
+      let diffDays = (date - prevDate) / (1000 * 60 * 60 * 24);
+      if (diffDays === 1) {
+        current++;
+      } else {
+        current = 1;
+      }
+    } else {
+      current = 1;
+    }
+
+    if (current > longest) {
+      longest = current;
+      longestEndDate = dateStr;
+    }
+
+    prevDate = date;
+  });
+
+  let valueEl = document.getElementById("longestStreakValue");
+  let subEl = document.getElementById("longestStreakSub");
+
+  if (valueEl) valueEl.innerText = longest;
+
+  if (subEl) {
+    if (longestEndDate) {
+      let d = new Date(longestEndDate);
+      let month = d.toLocaleString("default", { month: "long" });
+      let year = d.getFullYear();
+      subEl.innerText = `days · ${month} ${year}`;
+    } else {
+      subEl.innerText = "days";
+    }
+  }
+}
+
+// ===============================
 // 📈 UPDATE STATS
 // ===============================
 function updateStats() {
