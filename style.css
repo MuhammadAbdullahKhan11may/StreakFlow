@@ -68,7 +68,42 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .logo { font-weight: 800; font-size: 18px; color: var(--dark); text-decoration: none; }
 
 /* Old inline nav links — no longer used, replaced by the menu button */
-.nav-links { display: none; }
+new_str:
+/* Desktop nav links */
+.nav-links {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+  margin-right: 24px;
+}
+.nav-links a {
+  position: relative;
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--dark);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+.nav-links a:hover {
+  color: var(--orange);
+  transform: scale(1.08);
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
 
 /* Hamburger button — always visible, desktop and mobile, where Join Challenge was */
 .menu-toggle {
