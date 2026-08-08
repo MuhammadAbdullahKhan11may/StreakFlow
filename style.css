@@ -23,9 +23,24 @@ body {
   font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
   color: var(--dark);
   line-height: 1.5;
-  background: var(--bg-main);
+  background-color: var(--bg-main);
+  background-image: url('image3.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   overflow-x: hidden;
 }
+
+/* Reusable translucent text box for any text sitting directly on the background */
+.section-textbox {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  padding: 32px 28px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.faq .section-textbox .faq-title { text-align: left; }
 
 .container {
   max-width: 1100px;
@@ -177,6 +192,10 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   .nav-links { display: none; }
 }
 
+@media (max-width: 768px) {
+  body { background-attachment: scroll; }
+  .section-textbox { padding: 24px 20px; }
+}
 /* Hero */
 .hero {
   padding: 90px 0 70px;
@@ -212,13 +231,14 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .hero-note { color: #cfcdc8; font-size: 13px; }
 
 /* Problem */
-.problem { padding: 90px 0; background: var(--bg-main); }
-.eyebrow { color: var(--orange); font-weight: 700; font-size: 13px; letter-spacing: 0.5px; }
-.problem h2 { font-size: 34px; margin: 12px 0 16px; color: var(--text-primary); }
-.solution h2 { font-size: 34px; margin: 12px 0 16px; }
-.problem .muted { color: var(--text-secondary); }
-.problem .section-sub { color: var(--text-secondary); font-size: 16px; max-width: 620px; margin-bottom: 40px; }
-.section-sub { color: var(--gray); font-size: 16px; max-width: 620px; margin-bottom: 40px; }
+.problem { padding: 90px 0; background: transparent; }
+.eyebrow { color: var(--gold); font-weight: 700; font-size: 13px; letter-spacing: 0.5px; }
+.problem h2 { font-size: 34px; margin: 12px 0 16px; color: #ffffff; }
+.solution h2 { font-size: 34px; margin: 12px 0 16px; color: #ffffff; }
+.problem .muted { color: #e0ded9; }
+.problem .section-sub { color: #e0ded9; font-size: 16px; max-width: 620px; margin-bottom: 8px; }
+.problem .section-textbox .problem-cards { margin-top: 32px; }
+.section-sub { color: #e0ded9; font-size: 16px; max-width: 620px; margin-bottom: 40px; }
 
 .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .p-card { background: #6B4A2F; border-radius: 12px; padding: 24px; transition: transform 0.2s ease; }
@@ -229,9 +249,9 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .p-card-title { font-weight: 700; font-size: 17px; margin-top: 10px; color: var(--text-primary); }
 
 /* Solution */
-.solution { padding: 90px 0; background: var(--bg-card); }
-.solution h2 { color: var(--text-primary); }
-.solution .section-sub { color: var(--text-secondary); }
+.solution { padding: 90px 0; background: transparent; }
+.solution .section-sub { color: #e0ded9; margin-bottom: 8px; }
+.solution .section-textbox .flow { margin-top: 32px; }
 .flow { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
 .flow-pill {
   background: var(--bg-main);
@@ -248,8 +268,8 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .flow-arrow { color: var(--text-secondary); }
 
 /* Why */
-.why { padding: 90px 0; background: var(--bg-main); }
-.why h2 { font-size: 30px; margin-bottom: 36px; color: var(--text-primary); }
+.why { padding: 90px 0; background: transparent; }
+.why h2 { font-size: 30px; margin-bottom: 36px; color: #ffffff; }
 .why-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .why-card { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; transition: all 0.2s ease; }
 .why-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(212,169,74,0.12); }
@@ -258,21 +278,21 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .why-card p { color: var(--text-secondary); font-size: 14px; }
 
 /* Steps */
-.steps { padding: 70px 0 90px; background: var(--bg-card); }
-.steps h2 { font-size: 28px; margin-bottom: 40px; color: var(--text-primary); }
+.steps { padding: 70px 0 90px; background: transparent; }
+.steps h2 { font-size: 28px; margin-bottom: 40px; color: #ffffff; }
 .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .step-num { color: var(--gold); font-size: 26px; font-weight: 800; display: block; margin-bottom: 10px; }
 .step h3 { font-size: 17px; margin-bottom: 8px; color: var(--text-primary); }
 .step p { color: var(--text-secondary); font-size: 14px; }
 
 /* Mid CTA */
-.mid-cta { padding: 90px 0; text-align: center; background: var(--bg-main); }
-.mid-cta h2 { font-size: 32px; max-width: 700px; margin: 0 auto 16px; color: var(--text-primary); }
-.mid-cta .section-sub { margin: 0 auto 32px; color: var(--text-secondary); }
+.mid-cta { padding: 90px 0; text-align: center; background: transparent; }
+.mid-cta h2 { font-size: 32px; max-width: 700px; margin: 0 auto 16px; color: #ffffff; }
+.mid-cta .section-sub { margin: 0 auto 32px; color: #e0ded9; }
 
 /* Testimonials */
-.testimonials { padding: 20px 0 90px; background: var(--bg-card); }
-.testimonials h2 { font-size: 28px; margin-bottom: 36px; color: var(--text-primary); }
+.testimonials { padding: 20px 0 90px; background: transparent; }
+.testimonials h2 { font-size: 28px; margin-bottom: 36px; color: #ffffff; }
 .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .testimonial { background: var(--bg-main); border-radius: 12px; padding: 24px; border: 1px solid var(--card-border); transition: transform 0.2s ease; }
 .testimonial:hover { transform: translateY(-4px); border-color: var(--gold); }
@@ -290,8 +310,8 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .author-role { color: var(--text-secondary); font-size: 12px; }
 
 /* FAQ */
-.faq { padding: 90px 0; max-width: 800px; margin: 0 auto; background: var(--bg-main); }
-.faq-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--text-primary); }
+.faq { padding: 90px 0; max-width: 800px; margin: 0 auto; background: transparent; }
+.faq-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: #ffffff; }
 .faq-item { border-bottom: 1px solid var(--card-border); }
 .faq-question {
   width: 100%;
