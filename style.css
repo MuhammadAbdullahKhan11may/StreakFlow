@@ -49,18 +49,13 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .btn-white:hover { background: var(--dark); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.25); }
 
 /* Header */
-.site-header { border-bottom: 1px solid var(--border); }
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px;
+.site-header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
 }
-.logo { font-weight: 800; font-size: 18px; color: var(--dark); text-decoration: none; }
-.nav-links { display: flex; gap: 32px; }
-.nav-links a { color: var(--gray); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease; }
-.nav-links a:hover { color: var(--orange); }
-
 .header-inner {
   display: flex;
   align-items: center;
@@ -68,11 +63,10 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   padding: 18px 24px;
   position: relative; /* anchors the dropdown */
 }
+.logo { font-weight: 800; font-size: 18px; color: var(--dark); text-decoration: none; }
 
-/* Hide the old inline nav links completely — replaced by the menu button */
-.nav-links {
-  display: none;
-}
+/* Old inline nav links — no longer used, replaced by the menu button */
+.nav-links { display: none; }
 
 /* Hamburger button — always visible, desktop and mobile, where Join Challenge was */
 .menu-toggle {
@@ -272,7 +266,6 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 @media (max-width: 900px) {
   .why-cards, .step-grid, .testimonial-grid, .problem-cards { grid-template-columns: 1fr; }
   .hero h1 { font-size: 36px; }
-  .nav-links { display: none; }
 }
 
 /* ===== Responsive: large phones ===== */
