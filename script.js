@@ -298,6 +298,10 @@ window.onload = function () {
   if (btn) {
     btn.addEventListener("click", markTodayDone);
   }
+    let resetBtn = document.getElementById("resetBtn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", resetData);
+  }
 };
 
 // ===============================
@@ -313,4 +317,14 @@ function updateTodayBadge() {
   } else {
     badge.classList.remove("show");
   }
+}
+
+// ===============================
+// ♻️ RESET ALL DATA
+// ===============================
+function resetData() {
+  if (!confirm("This will erase all your streak progress. Continue?")) return;
+  localStorage.removeItem("streakData");
+  data = { streak: 0, days: {} };
+  updateUI();
 }
