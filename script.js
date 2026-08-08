@@ -63,6 +63,7 @@ function updateUI() {
   updateStats();
   updateMarkDoneButton();
   updateWeekRow();
+  updateLongestStreak();
 }
 
 // ===============================
