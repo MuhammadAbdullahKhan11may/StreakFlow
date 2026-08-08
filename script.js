@@ -289,3 +289,18 @@ window.onload = function () {
     btn.addEventListener("click", markTodayDone);
   }
 };
+
+// ===============================
+// ✅ UPDATE TODAY BADGE (DASHBOARD)
+// ===============================
+function updateTodayBadge() {
+  let today = getToday();
+  let badge = document.getElementById("todayBadge");
+  if (!badge) return;
+
+  if (data.days[today] === "done") {
+    badge.classList.add("show");
+  } else {
+    badge.classList.remove("show");
+  }
+}
