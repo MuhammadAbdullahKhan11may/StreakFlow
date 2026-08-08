@@ -318,17 +318,24 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 /* Final CTA */
 .final-cta-wrap { padding: 40px 24px 60px; background: var(--bg-main); }
 .final-cta {
-  background: linear-gradient(135deg, var(--gold), #b8863a);
+  position: relative;
+  background-color: var(--bg-card);
+  background-image:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('image2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   border-radius: 20px;
   text-align: center;
   padding: 60px 40px;
-  color: #1A1A1A;
+  color: #ffffff;
 }
-.final-cta-eyebrow { font-size: 12px; letter-spacing: 1px; opacity: 0.8; }
-.final-cta h2 { font-size: 32px; margin: 14px 0; }
-.final-cta p { opacity: 0.85; margin-bottom: 28px; }
-.final-cta .btn-white { background: #1A1A1A; color: var(--gold); }
-.final-cta .btn-white:hover { background: #fff; color: #1A1A1A; }
+.final-cta-eyebrow { font-size: 12px; letter-spacing: 1px; opacity: 0.85; color: #ffffff; }
+.final-cta h2 { font-size: 32px; margin: 14px 0; color: #ffffff; }
+.final-cta p { opacity: 0.9; margin-bottom: 28px; color: #ffffff; }
+.final-cta .btn-white { background: rgba(0,0,0,0.4); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); }
+.final-cta .btn-white:hover { background: rgba(0,0,0,0.6); border-color: #ffffff; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--card-border); padding: 30px 0; background: var(--bg-main); }
