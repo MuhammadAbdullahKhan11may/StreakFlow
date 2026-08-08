@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreakFlow - Dashboard</title>
+<link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <span class="brand-icon">🔥</span>
+        <span class="brand-name">StreakFlow</span>
+      </div>
+      <span class="date">AUG 8, 2026</span>
+    </div>
+
+    <!-- Streak Banner -->
+    <div class="streak-banner">
+      <span class="label">CURRENT STREAK</span>
+      <h1 class="streak-title">🔥 5 Days</h1>
+      <p class="streak-sub">You're doing great, keep going!</p>
+      <div class="badges">
+        <span class="badge">🏅 Personal Best</span>
+        <span class="badge">⚡ On Fire</span>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-label">LONGEST STREAK</span>
+        <h2 class="stat-value">12</h2>
+        <span class="stat-sub">days · July 2026</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">COMPLETION RATE</span>
+        <h2 class="stat-value orange">71%</h2>
+        <span class="stat-sub">this month</span>
+      </div>
+    </div>
+
+    <!-- This Week -->
+    <h3 class="section-title">This Week</h3>
+    <div class="week-card">
+      <div class="week-row">
+        <div class="week-day">
+          <span class="day-label">MON</span>
+          <div class="day-circle done">✓</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">TUE</span>
+          <div class="day-circle done">✓</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">WED</span>
+          <div class="day-circle missed">✕</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">THU</span>
+          <div class="day-circle done">✓</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">FRI</span>
+          <div class="day-circle today">🔥</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">SAT</span>
+          <div class="day-circle upcoming">—</div>
+        </div>
+        <div class="week-day">
+          <span class="day-label">SUN</span>
+          <div class="day-circle upcoming">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Progress -->
+    <div class="progress-card">
+      <div class="progress-top">
+        <span class="progress-label">Monthly Progress — 15 of 21 days</span>
+        <span class="progress-percent">71%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width: 71%;"></div>
+      </div>
+    </div>
+
+    <!-- Your Progress -->
+    <div class="progress-header">
+      <h3 class="section-title">Your Progress</h3>
+      <a href="#" class="view-all">View all →</a>
+    </div>
+
+    <div class="progress-list">
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon done-icon">✓</div>
+          <div>
+            <p class="day-title">Day 1 · Monday</p>
+            <p class="day-sub">Aug 4, 2026 · 20 min session</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill done-pill">DONE</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon done-icon">✓</div>
+          <div>
+            <p class="day-title">Day 2 · Tuesday</p>
+            <p class="day-sub">Aug 5, 2026 · 25 min session</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill done-pill">DONE</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon missed-icon">✕</div>
+          <div>
+            <p class="day-title">Day 3 · Wednesday</p>
+            <p class="day-sub">Aug 6, 2026 · Skipped</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill missed-pill">MISSED</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon done-icon">✓</div>
+          <div>
+            <p class="day-title">Day 4 · Thursday</p>
+            <p class="day-sub">Aug 7, 2026 · 30 min session</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill done-pill">DONE</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item today-item">
+        <div class="day-item-left">
+          <div class="status-icon today-icon">🔥</div>
+          <div>
+            <p class="day-title">Day 5 · Today</p>
+            <p class="day-sub">Aug 8, 2026 · In progress</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill today-pill">TODAY</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon upcoming-icon">📅</div>
+          <div>
+            <p class="day-title">Day 6 · Saturday</p>
+            <p class="day-sub">Aug 9, 2026 · Upcoming</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill soon-pill">SOON</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-item-left">
+          <div class="status-icon upcoming-icon">📅</div>
+          <div>
+            <p class="day-title">Day 7 · Sunday</p>
+            <p class="day-sub">Aug 10, 2026 · Upcoming</p>
+          </div>
+        </div>
+        <div class="day-item-right">
+          <span class="status-pill soon-pill">SOON</span>
+          <span class="chevron">›</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tip Card -->
+    <div class="tip-card">
+      <span class="tip-icon">💡</span>
+      <div>
+        <p class="tip-title">Consistency builds success 🔥</p>
+        <p class="tip-sub">Small daily actions compound into lasting results.</p>
+      </div>
+    </div>
+
+    <!-- Back to Home -->
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+  </div>
+
+</body>
+</html>
