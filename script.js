@@ -155,6 +155,36 @@ function updateProgressList() {
     }
   });
 }
+
+// ===============================
+// 📆 UPDATE WEEK ROW (MON–SUN)
+// ===============================
+function updateWeekRow() {
+  let today = getToday();
+  let circles = document.querySelectorAll(".day-circle");
+
+  circles.forEach((circle) => {
+    let date = circle.getAttribute("data-date");
+    if (!date) return;
+
+    let status = data.days[date];
+
+    if (date === today) {
+      circle.className = "day-circle today";
+      circle.innerText = "🔥";
+    } else if (status === "done") {
+      circle.className = "day-circle done";
+      circle.innerText = "✓";
+    } else if (status === "missed") {
+      circle.className = "day-circle missed";
+      circle.innerText = "✕";
+    } else {
+      circle.className = "day-circle upcoming";
+      circle.innerText = "—";
+    }
+  });
+}
+
 // ===============================
 // 📈 UPDATE STATS
 // ===============================
