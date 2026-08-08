@@ -61,9 +61,22 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .nav-links a { color: var(--gray); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease; }
 .nav-links a:hover { color: var(--orange); }
 
-/* Mobile menu toggle */
-.menu-toggle {
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  position: relative; /* anchors the dropdown */
+}
+
+/* Hide the old inline nav links completely — replaced by the menu button */
+.nav-links {
   display: none;
+}
+
+/* Hamburger button — always visible, desktop and mobile, where Join Challenge was */
+.menu-toggle {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -73,6 +86,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-left: auto;
 }
 .menu-toggle span {
   display: block;
@@ -82,33 +96,39 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   border-radius: 2px;
   transition: all 0.25s ease;
 }
+.menu-toggle:hover span { background: var(--orange); }
 .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .menu-toggle.open span:nth-child(2) { opacity: 0; }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Dropdown menu — floats under the button, doesn't push page content */
 .mobile-menu {
-  display: none;
+  position: absolute;
+  top: 100%;
+  right: 24px;
+  display: flex;
   flex-direction: column;
+  min-width: 200px;
   max-height: 0;
   overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
   transition: max-height 0.3s ease;
-  border-top: 1px solid var(--border);
+  z-index: 50;
 }
 .mobile-menu.open { max-height: 300px; }
 .mobile-menu a {
-  padding: 16px 24px;
+  padding: 14px 20px;
   color: var(--dark);
   text-decoration: none;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   border-bottom: 1px solid var(--border);
 }
+.mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: var(--orange); background: var(--gray-light); }
-
-@media (max-width: 900px) {
-  .menu-toggle { display: flex; }
-  .mobile-menu { display: flex; }
-}
 
 /* Hero */
 .hero { padding: 90px 0 70px; background: var(--gray-light); }
