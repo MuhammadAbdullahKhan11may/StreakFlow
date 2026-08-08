@@ -135,13 +135,19 @@ function updateMarkDoneButton() {
 // ===============================
 function updateProgressList() {
   let items = document.querySelectorAll(".day-item");
+  let today = getToday();
 
   items.forEach((item) => {
     let date = item.getAttribute("data-date");
     if (!date) return;
+    if (date === today) return; // today's row is handled by updateTodayStatus()
 
     let status = data.days[date];
-    if (!status) return;
+
+    // If the date already passed and was never marked, treat it as missed
+    if (!status && date < today) {
+      status = "missed";
+    }
 
     let pill = item.querySelector(".status-pill");
     let icon = item.querySelector(".status-icon");
@@ -157,6 +163,7 @@ function updateProgressList() {
       icon.innerText = "✕";
       icon.className = "status-icon missed-icon";
     }
+    // else: future date with no status — leave as "SOON" default from HTML
   });
 }
 
