@@ -293,14 +293,24 @@ function updateStats() {
 window.onload = function () {
   updateUI();
 
-  // Attach button if exists
   let btn = document.querySelector(".mark-done-btn");
   if (btn) {
     btn.addEventListener("click", markTodayDone);
   }
-    let resetBtn = document.getElementById("resetBtn");
+
+  let resetBtn = document.getElementById("resetBtn");
   if (resetBtn) {
     resetBtn.addEventListener("click", resetData);
+  }
+
+  let confirmBtn = document.getElementById("modalConfirmBtn");
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", confirmReset);
+  }
+
+  let cancelBtn = document.getElementById("modalCancelBtn");
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", closeResetModal);
   }
 };
 
@@ -323,8 +333,18 @@ function updateTodayBadge() {
 // ♻️ RESET ALL DATA
 // ===============================
 function resetData() {
-  if (!confirm("This will erase all your streak progress. Continue?")) return;
+  let modal = document.getElementById("resetModal");
+  if (modal) modal.classList.add("show");
+}
+
+function confirmReset() {
   localStorage.removeItem("streakData");
   data = { streak: 0, days: {} };
   updateUI();
+  closeResetModal();
+}
+
+function closeResetModal() {
+  let modal = document.getElementById("resetModal");
+  if (modal) modal.classList.remove("show");
 }
