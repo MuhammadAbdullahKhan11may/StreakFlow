@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreakFlow</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <div class="brand">
+      <span class="brand-icon">⚡</span>
+      <span class="brand-name">StreakFlow</span>
+    </div>
+
+    <div class="card">
+      <span class="label label-orange">CURRENT STREAK</span>
+      <h1 class="streak-title">🔥 5 Day Streak</h1>
+      <p class="streak-sub">You're doing great, keep going!</p>
+
+      <div class="days">
+        <div class="day">
+          <div class="dot filled"></div>
+          <span>M</span>
+        </div>
+        <div class="day">
+          <div class="dot filled"></div>
+          <span>T</span>
+        </div>
+        <div class="day">
+          <div class="dot filled"></div>
+          <span>W</span>
+        </div>
+        <div class="day">
+          <div class="dot filled"></div>
+          <span>T</span>
+        </div>
+        <div class="day">
+          <div class="dot filled"></div>
+          <span>F</span>
+        </div>
+        <div class="day">
+          <div class="dot"></div>
+          <span>S</span>
+        </div>
+        <div class="day">
+          <div class="dot"></div>
+          <span>S</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="label label-gray">🎯 TODAY'S GOAL</span>
+      <h2 class="goal-title">Upload 1 video</h2>
+
+      <button id="markDoneBtn" class="mark-done-btn">
+        <span id="markDoneText">Mark as Done</span>
+      </button>
+    </div>
+
+    <button class="dashboard-btn">
+      View Dashboard <span class="arrow">→</span>
+    </button>
+
+    <p class="footer-text">Keep your momentum going · Day 5</p>
+
+  </div>
+
+  <script>
+    const btn = document.getElementById('markDoneBtn');
+    const text = document.getElementById('markDoneText');
+
+    btn.addEventListener('click', () => {
+      if (!btn.classList.contains('completed')) {
+        btn.classList.add('completed');
+        text.innerHTML = '✓ Completed';
+      }
+    });
+  </script>
+
+</body>
+</html>
