@@ -216,3 +216,25 @@ body {
     padding: 13px;
   }
 }
+
+.streak-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.today-badge {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: none;
+}
+
+.today-badge.show {
+  display: inline-block;
+}
