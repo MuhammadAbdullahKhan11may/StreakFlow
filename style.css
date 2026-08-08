@@ -159,7 +159,19 @@ new_str:
   border-bottom: 1px solid var(--border);
 }
 .mobile-menu a:last-child { border-bottom: none; }
+new_str:
 .mobile-menu a:hover { color: var(--orange); background: var(--gray-light); }
+
+/* Desktop: show nav links, hide hamburger + dropdown */
+@media (min-width: 769px) {
+  .menu-toggle { display: none; }
+  .mobile-menu { display: none !important; }
+}
+
+/* Mobile: hide nav links, show hamburger */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
 
 /* Hero */
 .hero { padding: 90px 0 70px; background: var(--gray-light); }
