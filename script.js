@@ -238,6 +238,8 @@ function updateLongestStreak() {
       subEl.innerText = "days";
     }
   }
+
+  return longest;
 }
 
 // ===============================
