@@ -6,42 +6,26 @@
 <title>ABTalks — The 60-Day Coding Challenge</title>
 <link rel="stylesheet" href="style.css">
 </head>
-  <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    });
-  });
-</script>
 <body>
 
   <!-- ===== HEADER ===== -->
   <header class="site-header">
-  <div class="container header-inner">
-    <a href="#" class="logo">🔥ABTalks</a>
+    <div class="container header-inner">
+      <a href="#" class="logo">🔥ABTalks</a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <nav class="mobile-menu" id="mobileMenu">
-      <a href="#why">Why ABTalks</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </div>
-</header>
+      <nav class="mobile-menu" id="mobileMenu">
+        <a href="#why">Why ABTalks</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -54,7 +38,7 @@
         actually show.
       </p>
       <div class="hero-actions">
-       <a href="homepage.html" class="btn btn-primary">Start the 60-Day Challenge →</a>
+        <a href="homepage.html" class="btn btn-primary">Start the 60-Day Challenge →</a>
         <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
       </div>
       <p class="hero-note">Built for college students • Real projects • Public proof of work</p>
@@ -325,6 +309,23 @@
           item.classList.add('open');
           item.querySelector('.faq-toggle').textContent = '×';
         }
+      });
+    });
+  </script>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('open');
+        mobileMenu.classList.remove('open');
       });
     });
   </script>
