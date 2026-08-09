@@ -6,12 +6,20 @@ let data = JSON.parse(localStorage.getItem("streakData")) || {
   days: {}
 };
 
+let calendarYear, calendarMonth; // state for the calendar view
+
 // Get today's date
+// Get today's date in Pakistan Standard Time (UTC+5, no DST)
 function getToday() {
-  let d = new Date();
-  let year = d.getFullYear();
-  let month = String(d.getMonth() + 1).padStart(2, "0");
-  let day = String(d.getDate()).padStart(2, "0");
+  let now = new Date();
+  // Convert current UTC time to PKT by adding 5 hours to UTC
+  let utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+  let pktMs = utcMs + (5 * 60 * 60 * 1000);
+  let pkt = new Date(pktMs);
+
+  let year = pkt.getFullYear();
+  let month = String(pkt.getMonth() + 1).padStart(2, "0");
+  let day = String(pkt.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
 
@@ -23,18 +31,19 @@ function markTodayDone() {
 
   // Prevent double marking
   if (data.days[today] === "done") {
-    alert("Already marked as done today!");
+    let modal = document.getElementById("alreadyDoneModal");
+    if (modal) modal.classList.add("show");
     return;
   }
 
   data.days[today] = "done";
 
-  // Check yesterday
-  let yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  let yDate = yesterday.getFullYear() + "-" +
-    String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
-    String(yesterday.getDate()).padStart(2, "0");
+  // Check yesterday (based on PKT "today")
+  let [ty, tm, td] = today.split("-").map(Number);
+  let yesterdayDate = new Date(ty, tm - 1, td - 1);
+  let yDate = yesterdayDate.getFullYear() + "-" +
+    String(yesterdayDate.getMonth() + 1).padStart(2, "0") + "-" +
+    String(yesterdayDate.getDate()).padStart(2, "0");
 
   if (data.days[yDate] === "done") {
     data.streak++;
@@ -54,9 +63,80 @@ function saveData() {
 }
 
 // ===============================
+// 🚩 ENSURE TRACKING START DATE
+// ===============================
+// Days before this date are shown as neutral/white in the calendar —
+// only days from this date onward can be marked "missed" (red).
+function ensureTrackingStartDate() {
+  if (!data.trackingStartDate) {
+    data.trackingStartDate = getToday();
+    saveData();
+  }
+}
+
+// ===============================
+// 🗓️ RENDER CALENDAR VIEW
+// ===============================
+function renderCalendar(year, month) {
+  let grid = document.getElementById("calendarGrid");
+  let label = document.getElementById("calendarMonthLabel");
+  if (!grid || !label) return;
+
+  let monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  label.innerText = `${monthNames[month]} ${year}`;
+
+  let today = getToday();
+  let firstDay = new Date(year, month, 1);
+  let startOffset = firstDay.getDay(); // 0 = Sunday
+  let daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  grid.innerHTML = "";
+
+  for (let i = 0; i < startOffset; i++) {
+    let empty = document.createElement("div");
+    empty.className = "cal-cell cal-empty";
+    grid.appendChild(empty);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    let dateStr = year + "-" + String(month + 1).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+    let cell = document.createElement("div");
+    cell.className = "cal-cell";
+    cell.innerText = day;
+
+    let isDone = data.days[dateStr] === "done";
+    let isToday = dateStr === today;
+    let isBeforeTracking = dateStr < data.trackingStartDate;
+    let isPast = dateStr < today;
+
+    if (isDone) {
+      cell.classList.add("cal-done");
+    } else if (!isBeforeTracking && isPast && !isToday) {
+      cell.classList.add("cal-missed");
+    }
+
+    if (isToday) {
+      cell.classList.add("cal-today");
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+function shiftCalendarMonth(delta) {
+  calendarMonth += delta;
+  if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
+  if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
+  renderCalendar(calendarYear, calendarMonth);
+}
+
+// ===============================
 // 🔄 UPDATE UI
 // ===============================
 function updateUI() {
+  renderProgressList();
   updateStreak();
   updateTodayStatus();
   updateProgressList();
@@ -83,38 +163,25 @@ function updateStreak() {
 function updateTodayStatus() {
   let today = getToday();
 
-  let todayItem = document.querySelector(".today-item");
+  let todayItem = document.querySelector(`.day-item[data-date="${today}"]`);
 
   if (!todayItem) return;
 
+  todayItem.classList.add("today-item");
+
   let pill = todayItem.querySelector(".status-pill");
+  let icon = todayItem.querySelector(".status-icon");
 
   if (data.days[today] === "done") {
     pill.innerText = "DONE";
-    pill.classList.remove("today-pill");
-    pill.classList.add("done-pill");
+    pill.className = "status-pill done-pill";
+    if (icon) { icon.innerText = "✓"; icon.className = "status-icon done-icon"; }
+  } else {
+    pill.innerText = "TODAY";
+    pill.className = "status-pill today-pill";
+    if (icon) { icon.innerText = "🔥"; icon.className = "status-icon today-icon"; }
   }
 }
-
-// ===============================
-// 📅 UPDATE TODAY STATUS
-// ===============================
-function updateTodayStatus() {
-  let today = getToday();
-
-  let todayItem = document.querySelector(".today-item");
-
-  if (!todayItem) return;
-
-  let pill = todayItem.querySelector(".status-pill");
-
-  if (data.days[today] === "done") {
-    pill.innerText = "DONE";
-    pill.classList.remove("today-pill");
-    pill.classList.add("done-pill");
-  }
-}
-
 // ===============================
 // ✅ UPDATE MARK AS DONE BUTTON
 // ===============================
@@ -127,6 +194,64 @@ function updateMarkDoneButton() {
   if (data.days[today] === "done") {
     btn.classList.add("completed");
     if (text) text.innerHTML = "✓ Completed";
+  } else {
+    btn.classList.remove("completed");
+    if (text) text.innerHTML = "Mark Today's Progress";
+  }
+}
+
+// ===============================
+// 🗓️ RENDER ROLLING 14-DAY WINDOW
+// ===============================
+function renderProgressList() {
+  let container = document.getElementById("progressList");
+  if (!container) return;
+
+  let today = getToday();
+  let [ty, tm, td] = today.split("-").map(Number);
+  let baseDate = new Date(ty, tm - 1, td);
+
+  let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  container.innerHTML = "";
+
+  for (let offset = -6; offset <= 7; offset++) {
+    let d = new Date(baseDate);
+    d.setDate(d.getDate() + offset);
+
+    let dateStr = d.getFullYear() + "-" +
+      String(d.getMonth() + 1).padStart(2, "0") + "-" +
+      String(d.getDate()).padStart(2, "0");
+
+    let dayName = dayNames[d.getDay()];
+    let subDate = `${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    let isToday = offset === 0;
+
+    let item = document.createElement("div");
+    item.className = "day-item" + (isToday ? " today-item" : "");
+    item.setAttribute("data-date", dateStr);
+
+    item.innerHTML = `
+      <div class="day-item-left">
+        <div class="status-icon ${isToday ? "today-icon" : "upcoming-icon"}">${isToday ? "🔥" : "📅"}</div>
+        <div>
+          <p class="day-title">${dayName}${isToday ? " · Today" : ""}</p>
+          <p class="day-sub">${subDate}${isToday ? " · In progress" : ""}</p>
+        </div>
+      </div>
+      <div class="day-item-right">
+        <span class="status-pill ${isToday ? "today-pill" : "soon-pill"}">${isToday ? "TODAY" : "SOON"}</span>
+        <span class="chevron">›</span>
+      </div>
+    `;
+
+    container.appendChild(item);
+  }
+
+  let todayItem = container.querySelector(".today-item");
+  if (todayItem) {
+    todayItem.scrollIntoView({ block: "center" });
   }
 }
 
@@ -291,12 +416,42 @@ function updateStats() {
 // 🚀 INIT ON LOAD
 // ===============================
 window.onload = function () {
+  ensureTrackingStartDate();
   updateUI();
 
-  let btn = document.querySelector(".mark-done-btn");
-  if (btn) {
-    btn.addEventListener("click", markTodayDone);
+  let today = getToday();
+  let [cy, cm] = today.split("-").map(Number);
+  calendarYear = cy;
+  calendarMonth = cm - 1;
+
+  let viewAllBtn = document.getElementById("viewAllBtn");
+  let backToListBtn = document.getElementById("backToListBtn");
+  let progressList = document.getElementById("progressList");
+  let calendarView = document.getElementById("calendarView");
+
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      progressList.style.display = "none";
+      calendarView.style.display = "block";
+      renderCalendar(calendarYear, calendarMonth);
+    });
   }
+
+  if (backToListBtn) {
+    backToListBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      calendarView.style.display = "none";
+      progressList.style.display = "flex";
+    });
+  }
+
+  let prevBtn = document.getElementById("calendarPrevBtn");
+  let nextBtn = document.getElementById("calendarNextBtn");
+  if (prevBtn) prevBtn.addEventListener("click", () => shiftCalendarMonth(-1));
+  if (nextBtn) nextBtn.addEventListener("click", () => shiftCalendarMonth(1));
+
+  
 
   let resetBtn = document.getElementById("resetBtn");
   if (resetBtn) {
@@ -308,9 +463,17 @@ window.onload = function () {
     confirmBtn.addEventListener("click", confirmReset);
   }
 
-  let cancelBtn = document.getElementById("modalCancelBtn");
+ let cancelBtn = document.getElementById("modalCancelBtn");
   if (cancelBtn) {
     cancelBtn.addEventListener("click", closeResetModal);
+  }
+
+  let alreadyDoneOkBtn = document.getElementById("alreadyDoneOkBtn");
+  if (alreadyDoneOkBtn) {
+    alreadyDoneOkBtn.addEventListener("click", function () {
+      let modal = document.getElementById("alreadyDoneModal");
+      if (modal) modal.classList.remove("show");
+    });
   }
 };
 
@@ -340,7 +503,14 @@ function resetData() {
 function confirmReset() {
   localStorage.removeItem("streakData");
   data = { streak: 0, days: {} };
+  ensureTrackingStartDate();
   updateUI();
+  updateMarkDoneButton();
+  closeResetModal();
+  let calendarView = document.getElementById("calendarView");
+  if (calendarView && calendarView.style.display === "block") {
+    renderCalendar(calendarYear, calendarMonth);
+  }
   closeResetModal();
 }
 
