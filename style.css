@@ -192,7 +192,6 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   .nav-links { display: none; }
 }
 
-
 @media (max-width: 768px) {
   body {
     background-image: none;
