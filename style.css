@@ -244,12 +244,11 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .section-sub { color: #e0ded9; font-size: 16px; max-width: 620px; margin-bottom: 40px; }
 
 .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.p-card { background: #6B4A2F; border-radius: 12px; padding: 24px; transition: transform 0.2s ease; }
-.p-card:hover { transform: translateY(-4px); }
-.p-card-highlight { background: #6B4A2F; }
+.p-card { background: transparent; border-radius: 12px; padding: 24px; border: 2px solid #FFFFFF; }
+.p-card-highlight { background: transparent; }
 .p-card-label { color: #E8C9A0; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
 .p-card-highlight .p-card-label { color: #E8C9A0; }
-.p-card-title { font-weight: 700; font-size: 17px; margin-top: 10px; color: var(--text-primary); }
+.p-card-title { font-weight: 700; font-size: 17px; margin-top: 10px; color: #FFFFFF; }
 
 /* Solution */
 .solution { padding: 90px 0; background: transparent; }
@@ -274,7 +273,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .why { padding: 90px 0; background: transparent; }
 .why h2 { font-size: 30px; margin-bottom: 36px; color: #ffffff; }
 .why-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.why-card { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; transition: all 0.2s ease; }
+.why-card { background: transparent; border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; transition: all 0.2s ease; }
 .why-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(212,169,74,0.12); }
 .why-icon { font-size: 22px; display: block; margin-bottom: 14px; }
 .why-card h3 { font-size: 16px; margin-bottom: 8px; color: var(--text-primary); }
@@ -284,6 +283,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .steps { padding: 70px 0 90px; background: transparent; }
 .steps h2 { font-size: 28px; margin-bottom: 40px; color: #ffffff; }
 .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.step { border: 2px solid #FFFFFF; border-radius: 12px; padding: 20px; }
 .step-num { color: var(--gold); font-size: 26px; font-weight: 800; display: block; margin-bottom: 10px; }
 .step h3 { font-size: 17px; margin-bottom: 8px; color: var(--text-primary); }
 .step p { color: var(--text-secondary); font-size: 14px; }
@@ -297,7 +297,7 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
 .testimonials { padding: 20px 0 90px; background: transparent; }
 .testimonials h2 { font-size: 28px; margin-bottom: 36px; color: #ffffff; }
 .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.testimonial { background: var(--bg-main); border-radius: 12px; padding: 24px; border: 1px solid var(--card-border); transition: transform 0.2s ease; }
+.testimonial { background: transparent; border-radius: 12px; padding: 24px; border: 1px solid var(--card-border); transition: transform 0.2s ease; }
 .testimonial:hover { transform: translateY(-4px); border-color: var(--gold); }
 .testimonial p { font-style: italic; font-size: 14px; color: var(--text-primary); margin-bottom: 20px; }
 .testimonial-author { display: flex; align-items: center; gap: 12px; }
