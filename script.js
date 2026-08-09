@@ -428,14 +428,20 @@ function updateStats() {
   let doneDays = Object.values(data.days).filter(d => d === "done").length;
 
   let percent = totalDays === 0 ? 0 : Math.round((doneDays / totalDays) * 100);
+  let completionRateEl = document.getElementById("completionRateValue");
+  if (completionRateEl) completionRateEl.innerText = percent + "%";
+
+  // Overall challenge progress: doneDays out of 60
+  let totalChallengeDays = 60;
+  let challengePercent = Math.round((doneDays / totalChallengeDays) * 100);
 
   let percentEl = document.querySelector(".progress-percent");
   let bar = document.querySelector(".progress-bar-fill");
-  let completionRateEl = document.getElementById("completionRateValue");
+  let labelEl = document.querySelector(".progress-label");
 
-  if (percentEl) percentEl.innerText = percent + "%";
-  if (bar) bar.style.width = percent + "%";
-  if (completionRateEl) completionRateEl.innerText = percent + "%";
+  if (percentEl) percentEl.innerText = challengePercent + "%";
+  if (bar) bar.style.width = challengePercent + "%";
+  if (labelEl) labelEl.innerText = `Monthly Progress — ${doneDays} of ${totalChallengeDays} days`;
 }
 
 // ===============================
@@ -482,6 +488,11 @@ window.onload = function () {
   let resetBtn = document.getElementById("resetBtn");
   if (resetBtn) {
     resetBtn.addEventListener("click", resetData);
+  }
+
+  let resetBtnBanner = document.getElementById("resetBtnBanner");
+  if (resetBtnBanner) {
+    resetBtnBanner.addEventListener("click", resetData);
   }
 
   let confirmBtn = document.getElementById("modalConfirmBtn");
