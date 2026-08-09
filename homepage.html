@@ -23,9 +23,12 @@
     <div class="streak-banner">
   <div class="streak-top-row">
     <span class="label">CURRENT STREAK</span>
-    <a href="challengeday.html" class="mark-done-btn" id="markDoneBtn">
-      <span id="markDoneText">Mark Today's Progress</span>
-    </a>
+    <div class="streak-btn-col">
+      <a href="challengeday.html" class="mark-done-btn" id="markDoneBtn">
+        <span id="markDoneText">Mark Today's Progress</span>
+      </a>
+      <a href="analytics.html" class="mark-done-btn">Analytics</a>
+    </div>
   </div>
   <h1 class="streak-title">🔥 5 Days</h1>
       <p class="streak-sub">You're doing great, keep going!</p>
@@ -33,6 +36,10 @@
   <span class="badge" id="personalBestBadge">🏅 Personal Best</span>
   <span class="badge" id="onFireBadge">⚡ On Fire</span>
 </div>
+      <div class="banner-actions">
+        <a href="index.html" class="banner-btn">← Back to Home</a>
+        <button id="resetBtnBanner" class="banner-btn">Reset All Progress</button>
+      </div>
     </div>
 
     <!-- Stat Cards -->
@@ -87,11 +94,11 @@
     <!-- Monthly Progress -->
     <div class="progress-card">
       <div class="progress-top">
-        <span class="progress-label">Monthly Progress — 15 of 21 days</span>
-        <span class="progress-percent">71%</span>
+        <span class="progress-label">Monthly Progress — 0 of 60 days</span>
+        <span class="progress-percent">0%</span>
       </div>
       <div class="progress-bar-bg">
-        <div class="progress-bar-fill" style="width: 71%;"></div>
+        <div class="progress-bar-fill" style="width: 0%;"></div>
       </div>
     </div>
 
@@ -129,11 +136,7 @@
       </div>
     </div>
 
-    <!-- Back to Home -->
-    <div class="bottom-actions">
-      <a href="index.html" class="back-btn">← Back to Home</a>
-      <button id="resetBtn" class="back-btn" style="border:none; cursor:pointer;">Reset All Progress</button>
-    </div>
+    
 <!-- Reset Confirmation Modal -->
 <div class="modal-overlay" id="resetModal">
   <div class="modal-box">
@@ -159,6 +162,6 @@
   </div>
 </div>
   </div>
-<script src="script.js?v=5"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
