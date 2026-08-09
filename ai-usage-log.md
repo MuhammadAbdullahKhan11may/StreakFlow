@@ -5,3 +5,7 @@ https://claude.ai/share/cb173da1-c9ce-49a5-80d3-423e1ab14701
 https://chatgpt.com/share/6a7847d1-29b0-83e8-8b8e-1a936871f20c
 https://www.figma.com/make/oCwExBwR45dEmq0q0pACg2/Create-Dashboard-Page?t=yED4286hBuAYztvs-1
 https://www.figma.com/make/CoRnXDexKnpzUqjhM66827/Design-StreakFlow-Homepage?t=W8XekqSLcJwjMUtX-1
+https://chatgpt.com/share/6a78533f-e244-83e9-847a-baf94c1477f5
+https://claude.ai/share/588120d8-fc96-4dca-b10a-75f6af85c51a
+https://www.figma.com/make/jXa0yoA5qcnFR6mAGclp7Z/Create-based-on-prompt?t=96941SobKB7gOc0P-6
+https://www.figma.com/make/gmwCd1jYgtwWCx1hk806Vz/Create-new-design?t=96941SobKB7gOc0P-6
