@@ -267,3 +267,33 @@ body {
   .card-title { font-size: 16px; }
   .meta-row { flex-direction: column; gap: 12px; }
 }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.modal-overlay.show { display: flex; }
+.modal-box {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+.modal-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+.modal-title { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.modal-text { font-size: 13px; color: var(--gray); margin-bottom: 22px; line-height: 1.5; }
+.modal-actions { display: flex; gap: 10px; }
+.modal-btn { flex: 1; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; }
+.modal-confirm { background: var(--orange); color: #fff; }
