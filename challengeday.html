@@ -115,6 +115,8 @@
     const githubInput = document.getElementById('githubInput');
     const linkedinInput = document.getElementById('linkedinInput');
 
+    let isProofSaved = false;
+
     saveProofBtn.addEventListener('click', () => {
       if (!githubInput.value.trim() && !linkedinInput.value.trim()) {
         saveProofBtn.textContent = 'Add a link first';
@@ -129,6 +131,7 @@
       saveProofBtn.classList.add('btn-saved');
       saveProofBtn.disabled = true;
       resetProofBtn.style.display = 'inline-flex';
+      isProofSaved = true;
     });
 
     // Reset Proof of Work
@@ -140,6 +143,7 @@
       saveProofBtn.classList.remove('btn-saved');
       saveProofBtn.disabled = false;
       resetProofBtn.style.display = 'none';
+      isProofSaved = false;
     });
 
     // ===== Shared streak data helpers (same format as homepage) =====
@@ -201,6 +205,11 @@
     completeBtn.addEventListener('click', () => {
       let isComplete = completeBtn.classList.contains('btn-done');
       if (!isComplete) {
+        if (!isProofSaved) {
+          let modal = document.getElementById('noProofModal');
+          if (modal) modal.classList.add('show');
+          return;
+        }
         statusBadge.textContent = 'COMPLETED';
         statusBadge.classList.add('status-complete');
         completeBtn.textContent = '✓ Completed';
@@ -214,7 +223,24 @@
         unmarkToday();
       }
     });
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.id === 'noProofOkBtn') {
+        document.getElementById('noProofModal').classList.remove('show');
+      }
+    });
   </script>
+  
+
+<div class="modal-overlay" id="noProofModal">
+    <div class="modal-box">
+      <span class="modal-icon">⚠️</span>
+      <h3 class="modal-title">Add Proof First</h3>
+      <p class="modal-text">Please submit your GitHub link or LinkedIn post and save it before marking today's challenge complete.</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-confirm" id="noProofOkBtn" style="flex: none; width: 100%;">OK</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
