@@ -126,10 +126,36 @@ function renderCalendar(year, month) {
 }
 
 function shiftCalendarMonth(delta) {
-  calendarMonth += delta;
-  if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
-  if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
-  renderCalendar(calendarYear, calendarMonth);
+  let grid = document.getElementById("calendarGrid");
+  if (!grid) {
+    calendarMonth += delta;
+    if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
+    if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
+    renderCalendar(calendarYear, calendarMonth);
+    return;
+  }
+
+  let outClass = delta > 0 ? "slide-left" : "slide-right";
+  let inClass = delta > 0 ? "slide-right" : "slide-left";
+
+  grid.classList.add(outClass);
+
+  setTimeout(() => {
+    calendarMonth += delta;
+    if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
+    if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
+
+    renderCalendar(calendarYear, calendarMonth);
+
+    let newGrid = document.getElementById("calendarGrid");
+    if (newGrid) {
+      newGrid.classList.remove(outClass);
+      newGrid.classList.add(inClass);
+      // force reflow so the browser registers the starting position before transitioning
+      void newGrid.offsetWidth;
+      newGrid.classList.remove(inClass);
+    }
+  }, 200);
 }
 
 // ===============================
@@ -269,8 +295,8 @@ function updateProgressList() {
 
     let status = data.days[date];
 
-    // If the date already passed and was never marked, treat it as missed
-    if (!status && date < today) {
+    // Only treat as missed if it's past, unmarked, AND on/after tracking start date
+    if (!status && date < today && date >= data.trackingStartDate) {
       status = "missed";
     }
 
@@ -473,6 +499,18 @@ window.onload = function () {
     alreadyDoneOkBtn.addEventListener("click", function () {
       let modal = document.getElementById("alreadyDoneModal");
       if (modal) modal.classList.remove("show");
+    });
+  }
+
+  let markDoneBtn = document.getElementById("markDoneBtn");
+  if (markDoneBtn) {
+    markDoneBtn.addEventListener("click", function (e) {
+      let today = getToday();
+      if (data.days[today] === "done") {
+        e.preventDefault();
+        let modal = document.getElementById("alreadyDoneModal");
+        if (modal) modal.classList.add("show");
+      }
     });
   }
 };
