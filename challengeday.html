@@ -92,10 +92,11 @@
           </div>
 
           <button class="btn btn-outline btn-full" id="saveProofBtn">Save Proof of Work</button>
+          <button class="btn btn-outline btn-full" id="resetProofBtn" style="display:none;">Reset</button>
         </div>
 
         <button class="btn btn-primary btn-full btn-complete" id="completeBtn">
-          Mark Day 12 Complete →
+          Mark Complete →
         </button>
 
         <div class="card tip-card">
@@ -126,29 +127,91 @@
       }
       saveProofBtn.textContent = '✓ Saved';
       saveProofBtn.classList.add('btn-saved');
-      setTimeout(() => {
-        saveProofBtn.textContent = 'Save Proof of Work';
-        saveProofBtn.classList.remove('btn-saved');
-      }, 1800);
+      saveProofBtn.disabled = true;
+      resetProofBtn.style.display = 'inline-flex';
     });
+
+    // Reset Proof of Work
+    const resetProofBtn = document.getElementById('resetProofBtn');
+    resetProofBtn.addEventListener('click', () => {
+      githubInput.value = '';
+      linkedinInput.value = '';
+      saveProofBtn.textContent = 'Save Proof of Work';
+      saveProofBtn.classList.remove('btn-saved');
+      saveProofBtn.disabled = false;
+      resetProofBtn.style.display = 'none';
+    });
+
+    // ===== Shared streak data helpers (same format as homepage) =====
+    function getToday() {
+      let now = new Date();
+      let utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+      let pktMs = utcMs + (5 * 60 * 60 * 1000);
+      let pkt = new Date(pktMs);
+      let year = pkt.getFullYear();
+      let month = String(pkt.getMonth() + 1).padStart(2, "0");
+      let day = String(pkt.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function markTodayDoneAndGoHome() {
+      let streakData = JSON.parse(localStorage.getItem("streakData")) || { streak: 0, days: {} };
+      let today = getToday();
+
+      if (streakData.days[today] !== "done") {
+        streakData.days[today] = "done";
+
+        let [ty, tm, td] = today.split("-").map(Number);
+        let yesterdayDate = new Date(ty, tm - 1, td - 1);
+        let yDate = yesterdayDate.getFullYear() + "-" +
+          String(yesterdayDate.getMonth() + 1).padStart(2, "0") + "-" +
+          String(yesterdayDate.getDate()).padStart(2, "0");
+
+        streakData.streak = (streakData.days[yDate] === "done") ? streakData.streak + 1 : 1;
+
+        localStorage.setItem("streakData", JSON.stringify(streakData));
+      }
+
+      window.location.href = 'homepage.html';
+    }
+
+    function unmarkToday() {
+      let streakData = JSON.parse(localStorage.getItem("streakData")) || { streak: 0, days: {} };
+      let today = getToday();
+      delete streakData.days[today];
+      localStorage.setItem("streakData", JSON.stringify(streakData));
+    }
 
     // Mark Day Complete
     const completeBtn = document.getElementById('completeBtn');
     const statusBadge = document.getElementById('statusBadge');
-    let isComplete = false;
 
-    completeBtn.addEventListener('click', () => {
-      isComplete = !isComplete;
-      if (isComplete) {
+    // Reflect existing state if today was already marked done
+    (function initCompleteState() {
+      let streakData = JSON.parse(localStorage.getItem("streakData")) || { streak: 0, days: {} };
+      let today = getToday();
+      if (streakData.days[today] === 'done') {
         statusBadge.textContent = 'COMPLETED';
         statusBadge.classList.add('status-complete');
-        completeBtn.textContent = '✓ Day 12 Completed';
+        completeBtn.textContent = '✓ Completed';
         completeBtn.classList.add('btn-done');
+      }
+    })();
+
+    completeBtn.addEventListener('click', () => {
+      let isComplete = completeBtn.classList.contains('btn-done');
+      if (!isComplete) {
+        statusBadge.textContent = 'COMPLETED';
+        statusBadge.classList.add('status-complete');
+        completeBtn.textContent = '✓ Completed';
+        completeBtn.classList.add('btn-done');
+        markTodayDoneAndGoHome();
       } else {
         statusBadge.textContent = 'IN PROGRESS';
         statusBadge.classList.remove('status-complete');
-        completeBtn.textContent = 'Mark Day 12 Complete →';
+        completeBtn.textContent = 'Mark Complete →';
         completeBtn.classList.remove('btn-done');
+        unmarkToday();
       }
     });
   </script>
