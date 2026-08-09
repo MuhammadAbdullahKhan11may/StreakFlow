@@ -273,6 +273,107 @@ body {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 24px;
+  max-height: 420px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 4px;
+}
+
+.calendar-view {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-month-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.calendar-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e5e2dc;
+  background: #f7f5f2;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  transition: background 0.2s ease;
+}
+
+.calendar-nav-btn:hover {
+  background: #ff6a1a;
+  color: #fff;
+  border-color: #ff6a1a;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a0a0a0;
+  margin-bottom: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #f0ede8;
+}
+
+.cal-cell.cal-empty {
+  background: transparent;
+}
+
+.cal-cell.cal-done {
+  background: #22c55e;
+  color: #fff;
+}
+
+.cal-cell.cal-missed {
+  background: #ef4444;
+  color: #fff;
+}
+
+.cal-cell.cal-today {
+  border: 2px solid #3b82f6;
+  box-sizing: border-box;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 14px;
 }
 
 .day-item {
@@ -413,7 +514,14 @@ body {
 }
 
 /* Back button */
+.bottom-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .back-btn {
+  flex: 1;
   display: block;
   text-align: center;
   background: #fff;
@@ -429,6 +537,12 @@ body {
 
 .back-btn:hover {
   background: #f0ede8;
+}
+
+@media (max-width: 480px) {
+  .bottom-actions {
+    flex-direction: column;
+  }
 }
 
 /* Responsive */
@@ -519,6 +633,34 @@ body {
 
 .today-badge.show {
   display: inline-block;
+}
+
+.mark-done-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mark-done-btn:hover {
+  transform: scale(1.08);
+}
+
+.mark-done-btn.completed {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.mark-done-btn.completed:hover {
+  transform: scale(1.08);
 }
 .modal-overlay {
   display: none;
