@@ -192,8 +192,13 @@ h1, h2, h3 { font-weight: 800; line-height: 1.15; }
   .nav-links { display: none; }
 }
 
+
 @media (max-width: 768px) {
-  body { background-attachment: scroll; }
+  body {
+    background-attachment: scroll;
+    background-size: auto;
+    background-position: center top;
+  }
   .section-textbox { padding: 24px 20px; }
 }
 /* Hero */
