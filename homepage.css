@@ -647,7 +647,9 @@ body {
 }
 
 .mark-done-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   color: #000000;
   border: 2px solid #000000;
@@ -658,9 +660,42 @@ body {
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  text-align: center;
+  flex-shrink: 0;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+.banner-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.banner-btn {
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.banner-btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .banner-actions {
+    flex-direction: column;
+  }
+}
 .mark-done-btn:hover {
   transform: scale(1.08);
 }
@@ -762,4 +797,10 @@ body {
   background: linear-gradient(135deg, #ff6a1a, #ff3d1a);
   color: #fff;
   box-shadow: 0 6px 16px rgba(255, 90, 30, 0.35);
+}
+.streak-btn-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
 }
