@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 12 — Build Something That Solves a Problem | ABTalks</title>
+<link rel="stylesheet" href="day.css">
+</head>
+<body>
+
+  <div class="day-container">
+
+    <a href="#" class="back-link">← Back to Dashboard</a>
+
+    <div class="day-header">
+      <span class="day-label">DAY 12</span>
+      <h1>Build Something That Solves a Problem</h1>
+      <span class="status-badge" id="statusBadge">IN PROGRESS</span>
+      <p class="day-desc">
+        Today's challenge is about turning an idea into something useful. Build a small
+        project that solves a real problem and document what you created.
+      </p>
+    </div>
+
+    <div class="day-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="day-main">
+
+        <div class="card">
+          <span class="card-eyebrow">TODAY'S TASK</span>
+          <h2 class="card-title">Build Something That Solves a Problem</h2>
+          <p class="card-text">
+            Create a small application that solves a problem you personally
+            understand. Focus on building something functional rather than making it perfect.
+          </p>
+
+          <div class="divider"></div>
+
+          <span class="card-eyebrow">WHAT TO BUILD</span>
+          <ul class="dot-list">
+            <li>Identify a simple real-world problem</li>
+            <li>Build a working solution</li>
+            <li>Make the core feature functional</li>
+            <li>Push your work to GitHub</li>
+            <li>Share your progress on LinkedIn</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <div class="meta-row">
+            <div>
+              <span class="meta-label">⏱ ESTIMATED TIME</span>
+              <p class="meta-value">30–60 min</p>
+            </div>
+            <div>
+              <span class="meta-label">DIFFICULTY</span>
+              <p class="meta-value">Beginner</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card-eyebrow">SUCCESS CRITERIA</span>
+          <ul class="check-list" id="successList">
+            <li><span class="check">✓</span> Core feature works</li>
+            <li><span class="check">✓</span> Project is pushed to GitHub</li>
+            <li><span class="check">✓</span> GitHub link is accessible</li>
+            <li><span class="check">✓</span> Progress is shared on LinkedIn</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="day-side">
+
+        <div class="card">
+          <span class="card-eyebrow">PROOF OF WORK</span>
+          <p class="card-text">Show that you completed today's challenge.</p>
+
+          <label class="field-label" for="githubInput">GitHub Repository / Commit</label>
+          <div class="input-wrap">
+            <span class="input-icon">🐙</span>
+            <input type="url" id="githubInput" placeholder="https://github.com/username/project">
+          </div>
+
+          <label class="field-label" for="linkedinInput">LinkedIn Post</label>
+          <div class="input-wrap">
+            <span class="input-icon">in</span>
+            <input type="url" id="linkedinInput" placeholder="https://linkedin.com/posts/...">
+          </div>
+
+          <button class="btn btn-outline btn-full" id="saveProofBtn">Save Proof of Work</button>
+        </div>
+
+        <button class="btn btn-primary btn-full btn-complete" id="completeBtn">
+          Mark Day 12 Complete →
+        </button>
+
+        <div class="card tip-card">
+          <p class="tip-title">📍 Consistency builds success</p>
+          <p class="tip-text">One completed day is better than another day of planning.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Save Proof of Work
+    const saveProofBtn = document.getElementById('saveProofBtn');
+    const githubInput = document.getElementById('githubInput');
+    const linkedinInput = document.getElementById('linkedinInput');
+
+    saveProofBtn.addEventListener('click', () => {
+      if (!githubInput.value.trim() && !linkedinInput.value.trim()) {
+        saveProofBtn.textContent = 'Add a link first';
+        saveProofBtn.classList.add('btn-shake');
+        setTimeout(() => {
+          saveProofBtn.textContent = 'Save Proof of Work';
+          saveProofBtn.classList.remove('btn-shake');
+        }, 1500);
+        return;
+      }
+      saveProofBtn.textContent = '✓ Saved';
+      saveProofBtn.classList.add('btn-saved');
+      setTimeout(() => {
+        saveProofBtn.textContent = 'Save Proof of Work';
+        saveProofBtn.classList.remove('btn-saved');
+      }, 1800);
+    });
+
+    // Mark Day Complete
+    const completeBtn = document.getElementById('completeBtn');
+    const statusBadge = document.getElementById('statusBadge');
+    let isComplete = false;
+
+    completeBtn.addEventListener('click', () => {
+      isComplete = !isComplete;
+      if (isComplete) {
+        statusBadge.textContent = 'COMPLETED';
+        statusBadge.classList.add('status-complete');
+        completeBtn.textContent = '✓ Day 12 Completed';
+        completeBtn.classList.add('btn-done');
+      } else {
+        statusBadge.textContent = 'IN PROGRESS';
+        statusBadge.classList.remove('status-complete');
+        completeBtn.textContent = 'Mark Day 12 Complete →';
+        completeBtn.classList.remove('btn-done');
+      }
+    });
+  </script>
+
+</body>
+</html>
